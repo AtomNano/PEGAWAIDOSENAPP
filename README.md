@@ -1,136 +1,121 @@
-📚 Pegawai Dosen App: CRUD for Lecturer Data
+# 📚 Pegawai Dosen App
+
 A simple yet effective Flutter application designed for managing lecturer (Dosen) data, featuring full Create, Read, Update, and Delete (CRUD) functionalities. This app integrates with a custom backend API to provide a seamless data management experience.
 
-✨ Features
-Splash Screen: A visually appealing introductory screen upon app launch.
+## ✨ Features
 
-Dosen List Page: View a comprehensive list of all registered lecturers.
+- **Splash Screen**: A visually appealing introductory screen upon app launch
+- **Dosen List Page**: View a comprehensive list of all registered lecturers
+- **Add Dosen Page**: Easily add new lecturer entries with detailed information
+- **Dosen Detail Page**: View individual lecturer details, with options to Update existing information or Delete the entry
+- **Form Validation**: Ensures data integrity during input
+- **API Integration**: Communicates with a RESTful API for data persistence
+- **Responsive UI**: Designed to look good on various screen sizes
 
-Add Dosen Page: Easily add new lecturer entries with detailed information.
+## 📸 Screenshots & Demo
 
-Dosen Detail Page: View individual lecturer details, with options to Update existing information or Delete the entry.
+[Add screenshots or a GIF of your application here]
 
-Form Validation: Ensures data integrity during input.
+## 🛠️ Technologies Used
 
-API Integration: Communicates with a RESTful API for data persistence.
+- **Flutter**: UI toolkit for building natively compiled applications
+- **Dart**: Programming language used by Flutter
+- **http package**: For making network requests to the backend API
 
-Responsive UI: Designed to look good on various screen sizes.
+## 🚀 Getting Started
 
-📸 Screenshots & Demo
-(Add screenshots or a GIF of your application here. This significantly improves the README!)
+### Prerequisites
 
-🛠️ Technologies Used
-Flutter: The UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
+- Flutter SDK installed
+- A running backend API that exposes the `/api/dosen` endpoint
+- [Optional] VS Code with Flutter and Dart plugins, or Android Studio
 
-Dart: The programming language used by Flutter.
+### Installation
 
-http package: For making network requests to the backend API.
-
-🚀 Getting Started
-Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
-
-Prerequisites
-Flutter SDK installed.
-
-A running backend API that exposes the /api/dosen endpoint for CRUD operations, following the JSON structure provided (see API Integration section below).
-
-[Optional but Recommended] An IDE like VS Code with Flutter and Dart plugins, or Android Studio.
-
-Installation
-Clone the repository:
-
+1. Clone the repository:
+```bash
 git clone https://github.com/YOUR_USERNAME/pegawaidosenapp.git
 cd pegawaidosenapp
+```
 
-Install dependencies:
-
+2. Install dependencies:
+```bash
 flutter pub get
+```
 
-API Integration
-This application expects a backend API running at http://10.126.193.85:8000/api/dosen that supports standard RESTful operations.
+## API Integration
 
-Expected JSON structure for a Dosen object:
+This application expects a backend API running at `http://10.126.193.85:8000/api/dosen` that supports standard RESTful operations.
 
+### Expected JSON structure for a Dosen object:
+
+```json
 {
-"no": 1,
-"nip": "12",
-"nama_lengkap": "nano",
-"no_telepon": "12092352231",
-"email": "atomm@gmail.com",
-"alamat": "adfsklewrpodfwerw",
-"created_at": "2025-06-13T02:46:48.000000Z",
-"updated_at": "2025-06-13T02:46:48.000000Z"
+    "no": 1,
+    "nip": "12",
+    "nama_lengkap": "nano",
+    "no_telepon": "12092352231",
+    "email": "atomm@gmail.com",
+    "alamat": "adfsklewrpodfwerw",
+    "created_at": "2025-06-13T02:46:48.000000Z",
+    "updated_at": "2025-06-13T02:46:48.000000Z"
 }
+```
 
-Database Schema (Example):
+### Important: Adjusting the Base URL
 
-You can use the provided SQL file to set up your database for the backend.
-pegawai_dosen.sql
+Modify the `_baseUrl` variable in `lib/services/api_service.dart`:
 
-Important: Adjusting the Base URL
-
-The current API base URL in lib/services/api_service.dart is set to http://10.126.193.85:8000/api/dosen.
-
-If you are running the Flutter app on a physical device, ensure this IP address points to your machine running the backend, and both devices are on the same local network.
-
-For Android Emulators, change 10.126.193.85 to 10.0.2.2.
-
-For iOS Simulators or Web, change 10.126.193.85 to localhost.
-
-Modify the \_baseUrl variable in lib/services/api_service.dart:
-
-// lib/services/api_service.dart
+```dart
 class ApiService {
-static const String \_baseUrl = 'http://YOUR_BACKEND_IP_OR_HOSTNAME:8000/api/dosen';
-// ...
+    static const String _baseUrl = 'http://YOUR_BACKEND_IP_OR_HOSTNAME:8000/api/dosen';
+    // ...
 }
+```
 
-Running the App
-Ensure you have an emulator running or a physical device connected.
+- For Android Emulators: use `10.0.2.2`
+- For iOS Simulators or Web: use `localhost`
+- For Physical devices: use your machine's IP address
 
-Run the app from your terminal:
+## Running the App
 
+```bash
 flutter run
+```
 
-Or, run from your IDE.
+## 📂 Project Structure
 
-📂 Project Structure
+```
 pegawaidosenapp/
 ├── lib/
-│ ├── main.dart # Main application entry point and route definitions
-│ ├── models/
-│ │ └── dosen_model.dart # Data model for the Dosen object
-│ └── services/
-│ │ └── api_service.dart # Handles all API interactions (fetch, add, update, delete)
-│ └── screens/
-│ ├── splash_screen.dart # Initial splash screen
-│ ├── dosen_list_page.dart # Displays the list of lecturers
-│ ├── add_dosen_page.dart # Form to add a new lecturer
-│ └── dosen_detail_page.dart# Page for updating and deleting lecturer details
-├── pubspec.yaml # Project dependencies and metadata
-├── README.md # This README file
-└── pegawai_dosen.sql # Example SQL for database setup (if applicable)
+│   ├── main.dart                 # Main application entry point
+│   ├── models/
+│   │   └── dosen_model.dart      # Data model for Dosen
+│   ├── services/
+│   │   └── api_service.dart      # API interactions
+│   └── screens/
+│       ├── splash_screen.dart    # Initial splash screen
+│       ├── dosen_list_page.dart  # List of lecturers
+│       ├── add_dosen_page.dart   # Add new lecturer form
+│       └── dosen_detail_page.dart# Lecturer details page
+├── pubspec.yaml
+├── README.md
+└── pegawai_dosen.sql
+```
 
-🤝 Contributing
-Contributions are welcome! If you have any suggestions, bug reports, or want to contribute code, please feel free to:
+## 🤝 Contributing
 
-Fork the repository.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Create a new branch (git checkout -b feature/your-feature-name).
+## 📄 License
 
-Make your changes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-Commit your changes (git commit -m 'Add new feature').
+## 📧 Contact
 
-Push to the branch (git push origin feature/your-feature-name).
-
-Open a Pull Request.
-
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-📧 Contact
-If you have any questions or feedback, feel free to reach out:
-[@AtomNano](https://github.com/AtomNano)
-
-Email: luthfi2264a@gmail.com
+- GitHub: [@AtomNano](https://github.com/AtomNano)
+- Email: luthfi2264a@gmail.com
